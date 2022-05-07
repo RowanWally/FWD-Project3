@@ -357,8 +357,8 @@ jobs:
              ls 
              pwd
              export backend_url=$(curl https://kvdb.io/42mV4KeiPmRdBdCu4LhNtH/backend_url --request GET)
-             echo $backend_url
-             curl "$backend_url/api/status"
+             echo "${backend_url}"
+             curl "${backend_url}/api/status"
             #    curl -H "token: ecdfc255-81e1-4056-9efa-2d7fa10812e1" \
             #  --request GET https://api.memstash.io/values/backend_url)
        - run:
