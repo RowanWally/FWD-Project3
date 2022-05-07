@@ -177,7 +177,7 @@ jobs:
             --filters "Name=tag:Name,Values=backend-${CIRCLE_WORKFLOW_ID:0:7}" \
             --output text >> ~/project/.circleci/ansible/inventory.txt
             cat ~/project/.circleci/ansible/inventory.txt
-       - run:
+      - run:
            name: save the new back-end url to memory using memstach
            command: |
              backend_url=$(aws ec2 describe-instances \
