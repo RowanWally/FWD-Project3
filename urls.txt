@@ -1,5 +1,5 @@
 Public Url to GitHub repository (not private) [URL01]
-  https://github.com/RowanWally/RowanWally-Rowan-Wally-give-your-application-auto-deploy-superpowers-main
+  https://github.com/RowanWally/give-your-application-auto-deploy-superpowers-udapeople.git
 
 Public URL for your S3 Bucket (aka, your green candidate front-end) [URL02]
   http://udapeople-3297a76.s3-website-us-east-1.amazonaws.com/
