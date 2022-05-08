@@ -339,42 +339,42 @@ jobs:
        - destroy-environment:
            workflow_id: ${CIRCLE_WORKFLOW_ID:0:7}
 
-  # smoke-test:
-  #    docker:
-  #      - image: python:3.7-alpine3.11
-  #    steps:
-  #      - checkout
-  #      - attach_workspace:
-  #          at: /root
-  #      - run:
-  #          name: Install dependencies
-  #          command: |
-  #            apk add --update curl
-  #            pip install awscli
-  #      - run:
-  #          name: Backend smoke test
-  #          command: |
-  #            ls 
-  #            pwd
-  #            export backend_url=$(curl https://kvdb.io/42mV4KeiPmRdBdCu4LhNtH/backend_url --request GET)
-  #            echo "${backend_url}"
-  #            curl "${backend_url}/api/status"
-  #           #    curl -H "token: ecdfc255-81e1-4056-9efa-2d7fa10812e1" \
-  #           #  --request GET https://api.memstash.io/values/backend_url)
-  #      - run:
-  #          name: Frontend smoke test.
-  #          command: |
-  #            URL="http://udapeople-${CIRCLE_WORKFLOW_ID:0:7}.s3-website-us-east-1.amazonaws.com"
-  #            if curl -s ${URL} | grep "Welcome"
-  #            then
-  #              return 0
-  #            else
-  #              return 1
-  #            fi
-  #      - destroy-environment:
-  #         workflow_id: ${CIRCLE_WORKFLOW_ID:0:7}
-  #      - revert-migrations:
-  #         workflow_id: ${CIRCLE_WORKFLOW_ID:0:7}
+   smoke-test:
+      docker:
+        - image: python:3.7-alpine3.11
+      steps:
+        - checkout
+        - attach_workspace:
+            at: /root
+        - run:
+            name: Install dependencies
+            command: |
+              apk add --update curl
+              pip install awscli
+        - run:
+            name: Backend smoke test
+            command: |
+              ls 
+              pwd
+              export backend_url=$(curl https://kvdb.io/42mV4KeiPmRdBdCu4LhNtH/backend_url --request GET)
+              echo "${backend_url}"
+              curl "${backend_url}/api/status"
+             #    curl -H "token: ecdfc255-81e1-4056-9efa-2d7fa10812e1" \
+             #  --request GET https://api.memstash.io/values/backend_url)
+        - run:
+            name: Frontend smoke test.
+            command: |
+              URL="http://udapeople-${CIRCLE_WORKFLOW_ID:0:7}.s3-website-us-east-1.amazonaws.com"
+              if curl -s ${URL} | grep "Welcome"
+              then
+                return 0
+              else
+                return 1
+              fi
+        - destroy-environment:
+           workflow_id: ${CIRCLE_WORKFLOW_ID:0:7}
+        - revert-migrations:
+           workflow_id: ${CIRCLE_WORKFLOW_ID:0:7}
 
   cloudfront-update:
      docker:
@@ -404,29 +404,29 @@ jobs:
        - destroy-environment:
            workflow_id: ${CIRCLE_WORKFLOW_ID:0:7}
 
-  # cleanup:
-  #    docker:
-  #      - image: amazon/aws-cli
-  #    steps:
-  #      - checkout
-  #      - run:
-  #          name: Remove old stacks and files
-  #          command: |
-  #            OldWorkflowID=$(curl https://kvdb.io/42mV4KeiPmRdBdCu4LhNtH/workflowid -d '1')
-  #             #  curl -H "token: ecdfc255-81e1-4056-9efa-2d7fa10812e1" --request GET https://api.memstash.io/values/workflowid)
-  #            CurrentWorkflowID=${CIRCLE_WORKFLOW_ID:0:7}
-  #            if [[ $OldWorkflowID == "" ]]
-  #            then
-  #            echo "No workflow id found"
-  #            else
-  #            if [[ "$CurrentWorkflowID" != "$OldWorkflowID" ]]
-  #            then
-  #              echo "$OldWorkflowID!=$CurrentWorkflowID => will delete old version"
-  #              aws s3 rm "s3://udapeople-${OldWorkflowID}" --recursive
-  #              aws cloudformation delete-stack --stack-name "udapeople-frontend-${OldWorkflowID}"
-  #              aws cloudformation delete-stack --stack-name "udapeople-backend-${OldWorkflowID}"
-  #            fi
-  #            fi
+   cleanup:
+      docker:
+        - image: amazon/aws-cli
+      steps:
+        - checkout
+        - run:
+            name: Remove old stacks and files
+            command: |
+              OldWorkflowID=$(curl https://kvdb.io/42mV4KeiPmRdBdCu4LhNtH/workflowid -d '1')
+               #  curl -H "token: ecdfc255-81e1-4056-9efa-2d7fa10812e1" --request GET https://api.memstash.io/values/workflowid)
+              CurrentWorkflowID=${CIRCLE_WORKFLOW_ID:0:7}
+              if [[ $OldWorkflowID == "" ]]
+              then
+              echo "No workflow id found"
+              else
+              if [[ "$CurrentWorkflowID" != "$OldWorkflowID" ]]
+              then
+                echo "$OldWorkflowID!=$CurrentWorkflowID => will delete old version"
+                aws s3 rm "s3://udapeople-${OldWorkflowID}" --recursive
+                aws cloudformation delete-stack --stack-name "udapeople-frontend-${OldWorkflowID}"
+                aws cloudformation delete-stack --stack-name "udapeople-backend-${OldWorkflowID}"
+              fi
+              fi
 
 workflows:
   default:
@@ -456,10 +456,9 @@ workflows:
       - deploy-frontend:
           requires:
             - run-migrations
-      # - smoke-test:
-      #     requires: [deploy-backend, deploy-frontend]
+       - smoke-test:
+           requires: [deploy-backend, deploy-frontend]
       - cloudfront-update:
-            requires: [deploy-backend, deploy-frontend]
-          # requires: [smoke-test]
-      #  - cleanup:
-      #      requires: [cloudfront-update]
+           requires: [smoke-test]
+        - cleanup:
+            requires: [cloudfront-update]
