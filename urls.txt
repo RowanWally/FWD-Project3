@@ -2,14 +2,13 @@ Public Url to GitHub repository (not private) [URL01]
   https://github.com/RowanWally/RowanWally-Rowan-Wally-give-your-application-auto-deploy-superpowers-main
 
 Public URL for your S3 Bucket (aka, your green candidate front-end) [URL02]
-  https://udapeople-33972022.s3.us-east-1.amazonaws.com/
+  http://udapeople-3297a76.s3-website-us-east-1.amazonaws.com/
 
 Public URL for your CloudFront distribution (aka, your blue production front-end) [URL03]
   https://d34z216v7wnq0d.cloudfront.net
 
 Public URLs to deployed application back-end in EC2 [URL04]
-  http://52.91.135.147:3030/api/status
+  http://18.212.254.2:3030/api/status
 
 Public URL to your Prometheus Server [URL05]
-  http://ec2-3-89-123-221.compute-1.amazonaws.com:9090/
- me: http://ec2-52-87-171-120.compute-1.amazonaws.com:9090/
+  http://ec2-3-85-170-57.compute-1.amazonaws.com:9090/
