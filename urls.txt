@@ -1,15 +1,9 @@
-Public Url to GitHub repository (not private) [URL01]
-  https://github.com/RowanWally/give-your-application-auto-deploy-superpowers-udapeople.git
+1- URL 1 (Github Public Repo) = https://github.com/RowanWally/give-your-application-auto-deploy-superpowers-udapeople.git
 
-Public URL for your S3 Bucket (aka, your green candidate front-end) [URL02]
- http://udapeople-6a9bf9e.s3-website-us-east-1.amazonaws.com
+2- URL 2 (Public URL for S3 Bucket) = http://udapeople-6940e33.s3-website-us-west-2.amazonaws.com/#/employees   
 
-Public URL for your CloudFront distribution (aka, your blue production front-end) [URL03]
-  https://d34z216v7wnq0d.cloudfront.net
-  
+3- URL 3: (CloudFront Distribution) = http://udapeople-6940e33.s3-us-west-2.amazonaws.com/index.html
 
-Public URLs to deployed application back-end in EC2 [URL04]
-  http://54.82.17.210:3030/api/status
+4- URL 4: (healthy backend application) = http://ec2-54-187-68-228.us-west-2.compute.amazonaws.com:3030/api/status
 
-Public URL to your Prometheus Server [URL05]
-  http://90.84.174.251:9090/targets
+5- URL 5: (Promethues Server Showing healthy Targets): ec2-54-218-168-146.us-west-2.compute.amazonaws.com:9090/targets
