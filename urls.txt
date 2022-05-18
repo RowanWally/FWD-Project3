@@ -2,7 +2,7 @@
 
 2- URL 2 (Public URL for S3 Bucket) = http://udapeople-6940e33.s3-website-us-west-2.amazonaws.com/#/employees   
 
-3- URL 3: (CloudFront Distribution) = http://udapeople-6940e33.s3-us-west-2.amazonaws.com/index.html
+3- URL 3: (CloudFront Distribution) = http://d3dyb04ychx6ps.cloudfront.net/#/employees
 
 4- URL 4: (healthy backend application) = http://ec2-54-187-68-228.us-west-2.compute.amazonaws.com:3030/api/status
 
