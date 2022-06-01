@@ -7,3 +7,7 @@
 4- URL 4: (healthy backend application) = http://ec2-54-187-68-228.us-west-2.compute.amazonaws.com:3030/api/status
 
 5- URL 5: (Promethues Server Showing healthy Targets): ec2-54-218-168-146.us-west-2.compute.amazonaws.com:9090/targets
+
+
+
+6-
